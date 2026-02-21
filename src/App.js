@@ -1,18 +1,25 @@
-import React from "react";
-import AdminCentral from "./AdminCentral";
-import AdminLocal from "./AdminLocal";
+import logo from './logo.svg';
+import './App.css';
+import keycloak from "./keycloak";
+import AdminCentral from './AdminCentral';
+import AdminLocal from './AdminLocal';
 
-function App({ keycloak }) {
+function App() {
 
-  if (keycloak.hasRealmRole("admin-central")) {
-    return <AdminCentral />;
+  if (!keycloak.tokenParsed) {
+    return <h1>Chargement...</h1>;
   }
 
-  if (keycloak.hasRealmRole("admin-local")) {
-    return <AdminLocal />;
+  const roles = keycloak.tokenParsed.realm_access.roles;
+
+  if (roles.includes("admin-central")) {
+    return <AdminCentral/>;
   }
 
-  return <div>Accès refusé</div>;
+  if (roles.includes("admin-local")) {
+    return <AdminLocal/>;
+  }
+  return <h1>Accès refusé</h1>;
 }
 
 export default App;
