@@ -5,11 +5,11 @@ import keycloak from "./keycloak";
 
 keycloak.init({
   onLoad: "login-required",
-  checkLoginIframe: false   // 👈 IMPORTANT
+  checkLoginIframe: false
 }).then(authenticated => {
   if (authenticated) {
     ReactDOM.createRoot(document.getElementById("root")).render(
-      <App />
+      <App keycloak={keycloak} />
     );
   }
 });
