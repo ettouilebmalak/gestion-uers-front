@@ -1,25 +1,24 @@
 import logo from './logo.svg';
 import './App.css';
+import keycloak from "./keycloak";
+import AdminCentral from './AdminCentral';
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+
+  if (!keycloak.tokenParsed) {
+    return <h1>Chargement...</h1>;
+  }
+
+  const roles = keycloak.tokenParsed.realm_access.roles;
+
+  if (roles.includes("admin-central")) {
+    return <AdminCentral/>;
+  }
+
+  if (roles.includes("admin-local")) {
+    return <h1>Admin Local</h1>;
+  }
+  return <h1>Accès refusé</h1>;
 }
 
 export default App;
