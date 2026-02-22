@@ -13,12 +13,12 @@ function App() {
   const roles = keycloak.tokenParsed.realm_access.roles;
 
   if (roles.includes("admin-central")) {
-    return <AdminCentral/>;
-  }
+  return <AdminCentral keycloak={keycloak} />;
+}
 
-  if (roles.includes("admin-local")) {
-    return <AdminLocal/>;
-  }
+if (roles.includes("admin-local")) {
+  return <AdminLocal keycloak={keycloak} />;
+}
   return <h1>Accès refusé</h1>;
 }
 
