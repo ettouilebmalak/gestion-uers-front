@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import Administrations from "./Administrations";
+import Header from "./header";
 
 function AdminCentral() {
 
@@ -57,6 +58,9 @@ function AdminCentral() {
     };
 
     return (
+        <>
+        <Header/>
+        <div style={{ display: "flex", paddingTop: "60px" }}>
         <div style={{ display: "flex" }}>
 
             {/* Sidebar */}
@@ -205,6 +209,8 @@ function AdminCentral() {
 
             </div>
         </div>
+        </div>
+        </>
     );
 }
 
