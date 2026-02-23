@@ -3,7 +3,7 @@ import Administrations from "./Administrations";
 import Header from "./header";
 import { administrations } from "./data";
 
-function AdminCentral() {
+    function AdminCentral({ keycloak }) {
 
     const [selected, setSelected] = useState("");
     const [view, setView] = useState("list");
@@ -60,7 +60,7 @@ function AdminCentral() {
 
     return (
         <>
-        <Header/>
+        <Header  keycloak={keycloak}/>
         <div style={{ display: "flex", paddingTop: "60px" }}>
         <div style={{ display: "flex" }}>
 

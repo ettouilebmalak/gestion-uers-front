@@ -18,8 +18,29 @@ function App() {
 
 if (roles.includes("admin-local")) {
   return <AdminLocal keycloak={keycloak} />;
+}return (
+  <div style={{ textAlign: "center", marginTop: "100px", width:"100%" }}>
+    <h1 >Accès refusé</h1>
+    
+    <button
+      onClick={() =>
+        keycloak.logout({
+          redirectUri: window.location.origin
+        })
+      }
+      style={{
+        marginTop: "20px",
+        padding: "10px 20px",
+        backgroundColor: "#1e3a8a",
+        color: "white",
+        border: "none",
+        cursor: "pointer"
+      }}
+    >
+      Retour au login
+    </button>
+  </div>
+);
+  
 }
-  return <h1>Accès refusé</h1>;
-}
-
 export default App;

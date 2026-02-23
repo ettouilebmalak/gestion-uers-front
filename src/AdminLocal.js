@@ -1,7 +1,9 @@
 import React, { useState } from "react";
 import Header from "./header"; 
-function AdminLocal() {
+function AdminLocal({keycloak}) {
+   
   const [selected, setSelected] = useState(""); 
+
   const [users, setUsers] = useState([
     {
       id: 1,
@@ -53,9 +55,8 @@ function AdminLocal() {
 
   return (
     <>
-      <Header />
+      <Header  keycloak={keycloak} />
       <div style={{ display: "flex", paddingTop: "60px" }}>
-        {/* Sidebar */}
         <div
           style={{
             width: "220px",
@@ -163,7 +164,6 @@ function AdminLocal() {
                             color: "white",
                             border: "none",
                             padding: "5px 10px",
-                            cursor: user.active ? "not-allowed" : "pointer",
                             marginRight: "5px",
                           }}
                         >
@@ -178,7 +178,6 @@ function AdminLocal() {
                             color: "white",
                             border: "none",
                             padding: "5px 10px",
-                            cursor: !user.active ? "not-allowed" : "pointer",
                           }}
                         >
                           Désactiver
@@ -235,21 +234,21 @@ function AdminLocal() {
 
                 <label>Type:</label>
                 <br />
-                <input type="radio" name="role" value="transcription" required />{" "}
+                <input type="radio" name="role" value="transcription" required />
                 Transcription
                 <input
                   type="radio"
                   name="role"
                   value="e-service"
                   style={{ marginLeft: "10px" }}
-                />{" "}
+                />
                 E-service
                 <input
                   type="radio"
                   name="role"
                   value="referentiel_local"
                   style={{ marginLeft: "10px" }}
-                />{" "}
+                />
                 Référentiel local
                 <br />
                 <br />

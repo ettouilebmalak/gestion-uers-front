@@ -45,7 +45,7 @@ function Header({ keycloak }) {
           borderRadius: "6px",
           cursor: "pointer",
           fontSize: "14px",
-          fontWeight: "500",
+          
         }}
       >
         Déconnexion 
