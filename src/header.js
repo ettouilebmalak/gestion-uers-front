@@ -19,7 +19,6 @@ function Header() {
       }}
     >
 
-      {/* Titre */}
       <h1 style={{ fontSize: "20px", margin: 0 }}>Idarati</h1>
     </header>
   );
