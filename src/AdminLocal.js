@@ -1,6 +1,5 @@
 import React, { useState } from "react";
-import Header from "./header"; // <-- importer le header
-
+import Header from "./header"; 
 function AdminLocal() {
   const [selected, setSelected] = useState(""); 
   const [users, setUsers] = useState([
@@ -54,10 +53,7 @@ function AdminLocal() {
 
   return (
     <>
-      {/* Header fixe */}
       <Header />
-
-      {/* Ajouter un padding top pour ne pas que le header chevauche le contenu */}
       <div style={{ display: "flex", paddingTop: "60px" }}>
         {/* Sidebar */}
         <div
@@ -91,7 +87,6 @@ function AdminLocal() {
           </select>
         </div>
 
-        {/* Contenu principal */}
         <div style={{ flex: 1, padding: "40px" }}>
           {!selected && (
             <h1 style={{ textAlign: "center", color: "#1e3a8a" }}>
@@ -99,7 +94,6 @@ function AdminLocal() {
             </h1>
           )}
 
-          {/* Liste utilisateurs */}
           {selected === "users" && (
             <>
               <div
@@ -197,7 +191,6 @@ function AdminLocal() {
             </>
           )}
 
-          {/* Formulaire */}
           {selected === "create" && (
             <>
               <h2>Créer un utilisateur</h2>

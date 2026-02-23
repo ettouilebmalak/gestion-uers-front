@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import Administrations from "./Administrations";
 import Header from "./header";
+import { administrations } from "./data";
 
 function AdminCentral() {
 
@@ -63,7 +64,6 @@ function AdminCentral() {
         <div style={{ display: "flex", paddingTop: "60px" }}>
         <div style={{ display: "flex" }}>
 
-            {/* Sidebar */}
             <div style={{
                 width: "220px",
                 background: "#1e3a8a",
@@ -94,7 +94,6 @@ function AdminCentral() {
                 </select>
             </div>
 
-            {/* Content */}
             <div style={{ padding: "40px", flex: 1 }}>
 
                 {!selected && (
@@ -214,4 +213,4 @@ function AdminCentral() {
     );
 }
 
-export default AdminCentral;
+export default AdminCentral; 
