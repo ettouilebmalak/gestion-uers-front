@@ -3,9 +3,9 @@ import Administrations from "./Administrations";
 import Header from "./header";
 import { administrations } from "./data";
 
-    function AdminCentral({ keycloak }) {
-
+    function AdminCentral({ keycloak }) {    
     const [selected, setSelected] = useState("");
+    const[searchRole,setSearchRole]=useState("")
     const [view, setView] = useState("list");
 
     const [users, setUsers] = useState([
@@ -14,21 +14,21 @@ import { administrations } from "./data";
             nom: "ettouileb",
             prenom: "malak",
             email: "malak@gmail.com",
-            role: "instruction"
+            role: "admin_local"
         },
         {
             id: 2,
             nom: "bouaalam",
             prenom: "sara",
             email: "sara@gmail.com",
-            role: "validation"
+            role: "commission"
         },
         {
             id: 3,
             nom: "benqacem",
             prenom: "adil",
             email: "adil@gmail.com",
-            role: "validation"
+            role: "commission"
         }
     ]);
 
@@ -57,11 +57,14 @@ import { administrations } from "./data";
         const newList = users.filter(user => user.id !== id);
         setUsers(newList);
     };
+    const filterRole=users.filter(user=>
+        user.role.toLowerCase().includes(searchRole.toLowerCase())
+    )
 
     return (
         <>
         <Header  keycloak={keycloak}/>
-        <div style={{ display: "flex", paddingTop: "60px" }}>
+        <div style={{ display: "flex", paddingTop: "70px" }}>
         <div style={{ display: "flex" }}>
 
             <div style={{
@@ -111,8 +114,8 @@ import { administrations } from "./data";
 
                 {selected === "users" && view === "list" && (
                     <>
-                        <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center" }}>
-                            <h2>Listes users</h2>
+                        <div style={{  }}>
+                            <h2 style={{textAlign:"center"}}>Listes des utilisateurs</h2>
                             <button
                                 onClick={() => setView("create")}
                                 style={{
@@ -120,14 +123,25 @@ import { administrations } from "./data";
                                     color: "white",
                                     padding: "10px 20px",
                                     border: "none",
-                                    cursor: "pointer"
+                                    cursor: "pointer",
+                                    textAlign:"right"
+                                    
                                 }}
                             >
                                 Créer utilisateur
                             </button>
                         </div>
+                        
+                        <div style={{padding:"10px"}}>
+                            <input type="text" placeholder="rechercher par role" value={searchRole} 
+                            onChange={(e)=>setSearchRole(e.target.value)} 
+                            style={{width:"100%"}} 
+                            />
 
-                        <table border="1" width="100%" style={{ marginTop: "20px" }}>
+                        </div>
+
+
+                        <table border="1" width="300%" style={{ marginTop: "10px" }}>
                             <thead>
                                 <tr>
                                     <th>NOM</th>
@@ -138,7 +152,7 @@ import { administrations } from "./data";
                                 </tr>
                             </thead>
                             <tbody>
-                                {users.map((user) => (
+                                {filterRole.map((user) => (
                                     <tr key={user.id}>
                                         <td>{user.nom}</td>
                                         <td>{user.prenom}</td>
