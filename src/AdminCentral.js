@@ -87,7 +87,7 @@ import { administrations } from "./data";
                         backgroundColor: "#1e3a8a",
                         color: "white",
                         fontSize: "16px",
-                        cursor: "pointer",
+                        
                         width: "100%"
                     }}
                 >
@@ -123,7 +123,6 @@ import { administrations } from "./data";
                                     color: "white",
                                     padding: "10px 20px",
                                     border: "none",
-                                    cursor: "pointer",
                                     textAlign:"right"
                                     
                                 }}
@@ -135,7 +134,7 @@ import { administrations } from "./data";
                         <div style={{padding:"10px"}}>
                             <input type="text" placeholder="rechercher par role" value={searchRole} 
                             onChange={(e)=>setSearchRole(e.target.value)} 
-                            style={{width:"100%"}} 
+                            style={{width:"200%"}} 
                             />
 
                         </div>
@@ -166,7 +165,6 @@ import { administrations } from "./data";
                                                     color: "white",
                                                     border: "none",
                                                     padding: "5px 10px",
-                                                    cursor: "pointer"
                                                 }} >
                                                 Supprimer
                                             </button>
@@ -210,7 +208,6 @@ import { administrations } from "./data";
                                     color: "white",
                                     padding: "10px 20px",
                                     border: "none",
-                                    cursor: "pointer",
                                     width: "100%"
                                 }}
                             >

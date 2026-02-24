@@ -3,6 +3,7 @@ import Header from "./header";
 function AdminLocal({keycloak}) {
    
   const [selected, setSelected] = useState(""); 
+  const[searchRole,setSearchRole]=useState("");
 
   const [users, setUsers] = useState([
     {
@@ -52,6 +53,9 @@ function AdminLocal({keycloak}) {
       )
     );
   };
+   const filterRole=users.filter(user=>
+        user.role.toLowerCase().includes(searchRole.toLowerCase())
+    )
 
   return (
     <>
@@ -118,6 +122,12 @@ function AdminLocal({keycloak}) {
                   Créer utilisateur
                 </button>
                 
+              </div>
+              <div style={{padding:"10px"}}>
+                <input type="text" placeholder="rechercher par role" value={searchRole} 
+                            onChange={(e)=>setSearchRole(e.target.value)} 
+                            style={{width:"60%"}} 
+                            />
               </div>
 
               <table border="1" width="100%" style={{ marginTop: "20px" }}>
